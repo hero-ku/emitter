@@ -1,0 +1,24 @@
+{
+  "name": "@rbxts/emitter",
+  "version": "1.0.0",
+  "description": "Roblox Typescript package for creating event-emitting objects and classes.",
+  "main": "out/Index.lua",
+  "scripts": {
+    "prepublishOnly": "rbxtsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "out/index.d.ts",
+  "files": [
+    "out"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@rbxts/compiler-types": "^1.1.1-types.5",
+    "@rbxts/pascal": "^1.1.1",
+    "@rbxts/types": "^1.0.525"
+  }
+}
