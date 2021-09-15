@@ -1,10 +1,14 @@
 {
   "name": "@rbxts/emitter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Roblox Typescript package for creating event-emitting objects and classes.",
   "main": "out/Index.lua",
   "scripts": {
     "prepublishOnly": "rbxtsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hero-ku/emitter.git"
   },
   "keywords": [],
   "author": "",
