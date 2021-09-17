@@ -10,17 +10,17 @@ Emitter is a Roblox Typescript package for creating event-emitting objects and c
 To create an object, call the `createEmitter` function with the object you want to create the emitter out of, the type for the object, and the types for the events.
 
 ```ts
-import { createEmitter } from "@rbxts/emitter";
+import { CreateEmitter } from "@rbxts/emitter";
 
 interface Chef {
 	Foods: string[];
 }
 
 interface ChefEvents {
-	FoodCooked: (food: string) => any;
+	FoodCooked: (Food: string) => any;
 }
 
-const myChef = createEmitter<Chef, ChefEvents>({
+const myChef = CreateEmitter<Chef, ChefEvents>({
 	Foods: ["Pizza", "Macaroni", "Lasagna"]
 });
 ```
@@ -28,8 +28,8 @@ const myChef = createEmitter<Chef, ChefEvents>({
 ### Receiving Events
 Events are connected to through a single method: `Subscribe`, with the first argument being the name of the event and the second argument being the callback.
 ```ts
-myChef.Subscribe("FoodCooked", food => {
-	print(`Chef has cooked ${food}!`);
+myChef.Subscribe("FoodCooked", Food => {
+	print(`Chef has cooked ${Food}!`);
 });
 ```
 ### Firing Events
@@ -37,8 +37,8 @@ Once again, triggering events goes through a single method: `Fire`, with the fir
 ```ts
 while (true) {
 	wait(1);
-	const foodChosen = myChef.Foods[math.random(0, Foods.size - 1)];
-	myChef.Fire("FoodCooked", foodChosen);
+	const Food = MyChef.Foods[math.random(0, Foods.size - 1)];
+	MyChef.Fire("FoodCooked", Food);
 }
 ```
 
@@ -46,8 +46,8 @@ while (true) {
 To unsubscribe from an event, take the ID of the callback returned from the the `Subscribe` and pass it to the `Unsubscribe` method along with the name of the event you want to unsubscribe from.
 
 ```ts
-const subscription = myChef.Subscribe("FoodCooked", print);
-myChef.Unsubscribe("FoodCooked", subscription);
+const Subscription = MyChef.Subscribe("FoodCooked", print);
+MyChef.Unsubscribe("FoodCooked", Subscription);
 ```
 
 ### Creating Classes
@@ -66,15 +66,15 @@ class Chef extends Emitter<ChefEvents> {
 	static Foods = ["Pizza", "Macaroni", "Lasagna"];
 	
 	public CookFood() {
-		const foodChosen = Chef.Foods[math.random(0, Chef.Foods.size - 1)];
-		this.Fire("FoodCooked", foodChosen);
+		const Food = Chef.Foods[math.random(0, Chef.Foods.size - 1)];
+		this.Fire("FoodCooked", Food);
 	}
 }
 
-const myChef = new Chef();
-myChef.Subscribe("FoodCooked", food => {
-	print(`This chef has just cooked ${food}!`);
+const MyChef = new Chef();
+MyChef.Subscribe("FoodCooked", Food => {
+	print(`This chef has just cooked ${Food}!`);
 });
 
-myChef.CookFood();
+MyChef.CookFood();
 ```
