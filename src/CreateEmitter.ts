@@ -7,7 +7,7 @@ interface Emitter<Events extends { [Key: string]: Callback }> {
     Unsubscribe: <T extends keyof Events>(Event: T, Id: Number) => Void;
 }
 
-export default function createEmitter<Initial extends Object, Events extends { [Key: string]: Callback }>(Object: Initial) {
+export default function CreateEmitter<Initial extends Object, Events extends { [K in keyof Events]: Callback }>(Object: Initial) {
     const _Emitter = <Initial & Emitter<Events>> Object;
 
     const _Events: { [Key: string]: Callback[] } = {}; // Made a variable here to keep this array private.

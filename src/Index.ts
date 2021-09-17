@@ -1,8 +1,8 @@
 import Emitter from "Emitter";
-import createEmitter from "CreateEmitter";
+import CreateEmitter from "CreateEmitter";
 
 
 export {
 	Emitter,
-	createEmitter,
+	CreateEmitter,
 }
