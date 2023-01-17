@@ -1,6 +1,6 @@
 import type { Any, Object, Void, String, Unknown, Number } from "@rbxts/pascal";
 
-interface Emitter<Events extends { [Key: string]: Callback }> {
+interface Emitter<Events extends { [key: string]: Callback }> {
     Fire: <T extends keyof Events>(Event: T, ...Args: Parameters<Events[T]>) => Void;
 
     Subscribe: <T extends keyof Events>(Event: T, Callback: Events[T]) => Void;

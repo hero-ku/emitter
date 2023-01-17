@@ -1,7 +1,7 @@
 import { String, Number, Unknown } from "@rbxts/pascal";
 
-export default class Emitter<Events extends { [Key: string]: Callback }> {
-    private _Events: { [Key: string]: Callback[] } = {};
+export default class Emitter<Events extends { [K in keyof Events]: Callback }> {
+    private _Events: { [key: string]: Callback[] } = {};
 
     public Fire<T extends keyof Events>(Event: T, ...Args: Parameters<Events[T]>) {
         const Callbacks = this._Events[Event as String];
